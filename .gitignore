@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 .idea
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 # C extensions
 *.so
 
