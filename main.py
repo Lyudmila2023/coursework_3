@@ -3,7 +3,7 @@ from utils import load_data, sort_data, sort_operations, final_form
 
 def main():
     count_operations = 5
-    filtered_empty_from = True
+    filtered_empty_from = False
 
     data = load_data()
     data = sort_data(data, filtered_empty_from)

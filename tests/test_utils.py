@@ -17,4 +17,4 @@ def test_sort_operations(test_data):
 
 def test_final_form(test_data):
     data = final_form(test_data[:1])
-    assert data[0] == "\n19.11.2019 Перевод организации\nMaestro 781084** ****5 -> Счет **2\n30153.72 руб.\n"
+    assert data[0] == "\n19.11.2019 Перевод организации\nMaestro 781084** ****5568 -> Счет **2869\n30153.72 руб.\n"

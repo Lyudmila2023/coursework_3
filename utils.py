@@ -4,7 +4,7 @@ from datetime import datetime
 
 def load_data():
     """Выгружаем данные из json"""
-    with open("tests/operations.json", "r", encoding="utf-8") as file:
+    with open("operations.json", "r", encoding="utf-8") as file:
         data = json.load(file)
     return data
 
@@ -26,13 +26,16 @@ def final_form(data):
     for i in data:
         date = datetime.strptime(i['date'], '%Y-%m-%dT%H:%M:%S.%f').strftime('%d.%m.%Y')
         description = i['description']
-        sender = i['from'].split()
-        sender_bill = sender.pop(-1)
-        sender_bill = f'{sender_bill[:4]}{sender_bill[4:6]}** ****{sender_bill[-4]}'
-        bill_type = ' '.join(sender)
+        if 'from' in i:
+            sender = i['from'].split()
+            sender_bill = sender.pop(-1)
+            sender_bill = f'{sender_bill[:4]}{sender_bill[4:6]}** ****{sender_bill[-4:]}'
+            bill_type = ' '.join(sender)
+        else:
+            sender_bill, bill_type = "Cчет скрыт", ""
         recipient = i["to"].split()
         recipient_bill = recipient.pop(-1)
-        recipient_bill = f'**{recipient_bill[-4]}'
+        recipient_bill = f'**{recipient_bill[-4:]}'
         to_info = ' '.join(recipient)
         amount = f'{i["operationAmount"]["amount"]} {i["operationAmount"]["currency"]["name"]}'
         list_operations.append(f"""
